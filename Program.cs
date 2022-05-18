@@ -1,4 +1,6 @@
-﻿using source;
+﻿
+
+using source;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +17,11 @@ namespace ConsoleApp5
             // tao node 1
             Node node1 = new Node(1, null);
             Head = node1;
-            
+
             //tao node 2 lien ket node 1 vao node 2
             Node node2 = new Node(2, null);
             node1.next = node2;
-           
+
 
             // them node vao giua
             Node node3 = new Node(3, null);
@@ -28,7 +30,7 @@ namespace ConsoleApp5
 
             // them node vao dau
             Node node4 = new Node(4, null);
-            node4.next=Head;
+            node4.next = Head;
             Head = node4;
             void themNodeDau()
             {
@@ -37,7 +39,7 @@ namespace ConsoleApp5
                 Node node10 = new Node(data, null);
                 node10.next = Head;
                 Head = node10;
-                Console.Write("DLK sau khi them Node: ");
+                Console.Write("DSLK sau khi them Node: ");
                 xuatDS();
             }
             void themNodeCuoi()
@@ -55,7 +57,7 @@ namespace ConsoleApp5
                     t = t.next;
                 }
                 t.next = node10;
-                Console.Write("DLK sau khi them Node: ");
+                Console.Write("DSLK sau khi them Node: ");
 
                 xuatDS();
             }
@@ -79,7 +81,7 @@ namespace ConsoleApp5
                 int x = Convert.ToInt32(Console.ReadLine());
                 Node e = Head.next;
                 Node w = Head;
-                while(e != null)
+                while (e != null)
                 {
                     if (x == Head.data)
                     {
@@ -89,7 +91,7 @@ namespace ConsoleApp5
                     else if (x == e.data)
                     {
                         w.next = e.next;
-                        
+
                     }
                     e = e.next;
                     w = w.next;
@@ -97,8 +99,8 @@ namespace ConsoleApp5
 
                 }
             }
-                // in gia tri trong dnah sach lien ket
-                Node p = Head;
+            // in gia tri trong dnah sach lien ket
+            Node p = Head;
             void menu()
             {
                 Console.WriteLine("=============  MENU  ================ \n");
@@ -124,67 +126,97 @@ namespace ConsoleApp5
                     Console.Write(" ");
                     p = p.next;
 
-                   
+
                 }
                 Console.Write("\n\n");
 
             }
             void timMax()
             {
-                int max=Head.data;
-                 p = Head;
+                int max = Head.data;
+                p = Head;
                 while (p != null)
-                {   
-                    if(p.next != null) {
-                        if (max<p.next.data)
+                {
+                    if (p.next != null)
+                    {
+                        if (max < p.next.data)
                         {
                             max = p.next.data;
-                            
+
                         }
                     }
-                    
+
                     p = p.next;
 
 
                 }
-                Console.WriteLine("Phan tu lon nhat : {0}",max);
-                
+                Console.WriteLine("Phan tu lon nhat : {0}", max);
+
 
             }
-            
+
             void XoaPhanTuDau()
             {
-                Head = Head.next;
-            }
-            void XoaPhanTuCuoi() {
-
-                
-                p = Head;
-                Node t = p.next;
-
-
-                while (t.next != null)
+                if (Head == null)
                 {
-                    p = p.next;
-                    t = p.next;
+                    Console.WriteLine("Khong co phan tu nao de xoa !!!");
+
                 }
-                p.next = null;
-                
+                else
+                    Head = Head.next;
+            }
+            void XoaPhanTuCuoi()
+            {
+
+                if (Head == null)
+                {
+                    Console.WriteLine("Khong co phan tu nao de xoa !!!");
+
+                }
+                else
+                {
+
+
+                    p = Head;
+                    Node t = Head.next;
+                    if (Head.next == null)
+                    {
+                        Head = null;
+
+                    }
+                    else
+                    {
+                        while (t.next != null)
+                        {
+
+                            p = p.next;
+                            t = t.next;
+
+
+                        }
+
+                        p.next = null;
+                    }
+
+
+                }
+
+
             }
             void timphantu()
             {
                 Console.Write("Nhap phan tu can tim: ");
                 int x = Convert.ToInt32(Console.ReadLine());
-                int check = 0,dem=0;
+                int check = 0, dem = 0;
                 p = Head;
                 while (p != null)
                 {
-                    
+
                     if (x == p.data)
                     {
-                        
+
                         check = 1;
-                        
+
                     }
 
                     p = p.next;
@@ -193,21 +225,21 @@ namespace ConsoleApp5
                 if (check == 1)
                 {
 
-                    Console.Write("Co phan tu {0} trong DSLK vi tri:",x);
+                    Console.Write("Co phan tu {0} trong DSLK vi tri:", x);
                     p = Head;
                     while (p != null)
                     {
                         dem++;
                         if (x == p.data)
                         {
-                            Console.Write(" {0}",dem);
+                            Console.Write(" {0}", dem);
                         }
                         p = p.next;
                     }
                     Console.Write("\n");
                 }
                 else
-                    Console.WriteLine("Khong Co phan tu {0} trong DSLK",x);
+                    Console.WriteLine("Khong Co phan tu {0} trong DSLK", x);
             }
 
 
@@ -216,15 +248,15 @@ namespace ConsoleApp5
             menu();
             do
             {
-                
+
                 Console.Write("-----------------------\nNhap lua chon cua ban ( 0 - 9 ): ");
-                luaChonLai: 
+            luaChonLai:
                 luachon = Convert.ToInt32(Console.ReadLine());
                 if (luachon >= 0 && luachon < 10)
                 {
 
                 }
-                else 
+                else
                 {
                     Console.Write("\nNhap lai lua chon ( 0 - 9 ) : ");
                     goto luaChonLai;
@@ -238,15 +270,15 @@ namespace ConsoleApp5
                         break;
                     case 2:
                         themNode();
-                        
+
                         break;
                     case 3:
                         XoaPhanTuDau();
-                        
+
                         break;
                     case 4:
                         XoaPhanTuCuoi();
-                        
+
                         break;
                     case 5:
                         timphantu();
@@ -262,12 +294,21 @@ namespace ConsoleApp5
                         Console.Clear();
                         menu();
                         break;
+                    case 9:
+                        int soluongnode = Convert.ToInt32(Console.ReadLine());
+                        while (soluongnode != 0)
+                        {
+                            soluongnode--;
+                            themNodeCuoi();
+                        }
+
+                        break;
                 }
             }
             while (luachon != 0);
 
             Console.ReadKey();
 
-            }
+        }
     }
 }
